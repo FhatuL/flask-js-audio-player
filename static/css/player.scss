@@ -5,6 +5,10 @@
 $row-bg: #304FFE;
 $row-txt: #ffff;
 $breakpoint-tablet: 768px;
+$art-size: 100px;
+$art-size-s: 70px;
+$player-width-l: 60%;
+$player-width-s: 97%;
 
 
 
@@ -31,9 +35,16 @@ $breakpoint-tablet: 768px;
     }
 }
 
+.controls-section {
+    width: $player-width-l;
+    margin-top: 1.5%;
+    margin-bottom: 1.2%;
+}
+
 .player-controls {
     display: flex;
     flex-direction: column;
+    width: 48%;
 }
 
 table {
@@ -46,7 +57,7 @@ table {
         border-right: none;
     }
 
-    max-height: 60vh;
+    max-height: 50vh;
     overflow: scroll;
 
     td:last-child, tr:last-child {
@@ -58,10 +69,10 @@ table {
 
 
 #songs-list {
-    max-height: 75vh;
+    max-height: 71vh;
     overflow: scroll;
     overflow-x: hidden;
-    width: 60%;
+    width: $player-width-l;
 
     scrollbar-width: thin;
 
@@ -88,13 +99,36 @@ table {
     cursor: pointer;
 }
 
+.pause-color {
+    background: $indigo-800;
+
+    &:hover {
+        background: $indigo-800;
+    }
+}
+
+.beat-art {
+    width: $art-size;
+    height: $art-size;
+}
+
+.track-info {
+    width: 25%
+}
+
+.song-title {
+    width: 100%;
+}
+
+// media queries
+
 @media (max-width: $breakpoint-tablet) {
     .price, .bpm, .table-head {
         display: none;
     }
 
     #songs-list {
-        width: 97%;
+        width: $player-width-s;
     }
 
     .player {
@@ -103,17 +137,28 @@ table {
         }
 
         .player-controls {
-            margin-top: 5%;
+            margin-top: 0%;
         }
     }
 
+    .beat-art {
+        width: $art-size-s;
 
-}
+        height: $art-size-s;
+        // display: none;
+    }
 
-.pause-color {
-    background: $indigo-800;
+    .controls-section {
+        width: $player-width-s;
 
-    &:hover {
-        background: $indigo-800;
+    }
+
+    .control-buttons {
+        width: auto;
+    }
+
+    .track-info {
+        width: 25%
     }
 }
+

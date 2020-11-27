@@ -27,6 +27,12 @@
   background: #084298;
 }
 
+.controls-section {
+  width: 60%;
+  margin-top: 1.5%;
+  margin-bottom: 1.2%;
+}
+
 .player-controls {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -35,13 +41,14 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 48%;
 }
 
 table {
   border-left: 0px;
   border-right: none;
   width: 100%;
-  max-height: 60vh;
+  max-height: 50vh;
   overflow: scroll;
 }
 
@@ -55,7 +62,7 @@ table td:last-child, table tr:last-child {
 }
 
 #songs-list {
-  max-height: 75vh;
+  max-height: 71vh;
   overflow: scroll;
   overflow-x: hidden;
   width: 60%;
@@ -84,6 +91,27 @@ table td:last-child, table tr:last-child {
   cursor: pointer;
 }
 
+.pause-color {
+  background: #290661;
+}
+
+.pause-color:hover {
+  background: #290661;
+}
+
+.beat-art {
+  width: 100px;
+  height: 100px;
+}
+
+.track-info {
+  width: 25%;
+}
+
+.song-title {
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   .price, .bpm, .table-head {
     display: none;
@@ -97,15 +125,20 @@ table td:last-child, table tr:last-child {
             order: -1;
   }
   .player .player-controls {
-    margin-top: 5%;
+    margin-top: 0%;
   }
-}
-
-.pause-color {
-  background: #290661;
-}
-
-.pause-color:hover {
-  background: #290661;
+  .beat-art {
+    width: 70px;
+    height: 70px;
+  }
+  .controls-section {
+    width: 97%;
+  }
+  .control-buttons {
+    width: auto;
+  }
+  .track-info {
+    width: 25%;
+  }
 }
 /*# sourceMappingURL=player.css.map */

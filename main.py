@@ -43,13 +43,15 @@ for item,i in zip(paths, range(len(paths))):
     })
 
 data = []
+song_names = []
 
 for item in songs:
     data.append(item['path'])
+    song_names.append(item['name'])
 
 @app.route('/')
 def home():
-    return render_template('index.html', title = 'Player', songs = songs, data = json.dumps(data))
+    return render_template('index.html', title = 'Player', songs = songs, data = json.dumps(data), songs_name = song_names)
 
 @app.route('/audio/<path:filename>')
 def serve(filename):

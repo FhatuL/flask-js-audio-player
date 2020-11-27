@@ -1,32 +1,50 @@
 <div class="player">
 
-    <div class="controls-section">
+    <div class="controls-section flex mx-auto content-center justify-between flex-wrap border rounded-r-md shadow-md ">
 
-        <div class="track-info">
-            
+        <div class="track-info  flex justify-items-center">
+            <div class="track-art flex justify-items-center">
+                <img src="{{url_for('static', filename='img/artwork/default.png')}}" alt="track artwork " class="beat-art my-auto">
+                
+            </div>
+
         </div>
 
-        <div class="player-controls mx-auto">
-            <div class="control-buttons mx-auto flex justify-items-center">
-                <button class="mx-2" id="prev-btn">
-                    <i class="fa fa-backward" aria-hidden="true"></i>
+        <div class="player-controls mx-auto flex content-center justify-center py-2">
+
+            <div class="progress-bar">
+
+            </div>
+
+            <div class="text-gray-500 dark:text-gray-400 flex justify-between text-3x1 md:text-sm font-medium tabular-nums">
+                <div class="" id="curr-play-time">00:00</div>
+                <div class="" id="total-play-time">00:00</div>
+            </div>
+
+            <div class="control-buttons mx-auto flex self-center">
+                <button class="" id="prev-btn">
+                    <i class="fa fa-backward text-2xl" aria-hidden="true"></i>
                 </button>
 
-                <button id="play-btn" data-play="false" role="switch" aria-checked="false" class="bg-purple-50 shadow rounded-full">
-                    <i class="fas fa-play-circle text-4xl"></i>
+                <button id="play-btn" data-play="false" role="switch" aria-checked="false" class="bg-purple-50 shadow rounded-full mx-6">
+                    <i class="fas fa-play-circle text-5xl"></i>
                     
                 </button>
 
-                <button class="mx-2" id="next-btn">
-                    <i class="fa fa-forward" aria-hidden="true"></i>
+                <button class="" id="next-btn">
+                    <i class="fa fa-forward text-2xl" aria-hidden="true"></i>
                 </button>
             </div>
 
-            <div class="vol-controls mx-auto">
+            <div class="vol-controls mx-auto justify-items-center flex self-center">
                 <i class="material-icons md-24 vol-icon">volume_mute</i>
                 <input class="mx-auto" type="range" name="" id="vol" min="0" max='1' value="0.8" step="0.01">
             </div>
             
+        </div>
+
+        <div class="song-title">
+            <p id="song-title" class="font-semibold"></p>
         </div>
     </div>
 
@@ -35,9 +53,9 @@
             <thead class="table-head">
                 <tr class="py-1">
                     <th class="border"></th>
-                    <th class="border text-left">TITLE</th>
-                    <th class="border text-left">DURATION</th>
-                    <th class="border text-left pr-32 bpm">BPM</th>
+                    <th class="border text-left font-thin">TITLE</th>
+                    <th class="border text-left font-thin">DURATION</th>
+                    <th class="border text-left pr-32 bpm font-thin ">BPM</th>
                     <th class="border price"></th>
                 </tr>
             </thead>
@@ -45,10 +63,10 @@
             {% for song in songs %}
                 <tr onclick="toggle(this, {{song['index']}})" id = "index-{{song['index']}}" class= "song-info devide-y-2">
                     <td class="border art pl-4"><img class ="song-art" src="{{url_for('static', filename = song['img'])}}" alt=""></td>
-                    <td class="border text-left pr-7 py-2 ">{{song['name']}}</td>
-                    <td class="border text-left">{{song['length']}}</td>
-                    <td class="border py-2 bpm">{{song['bpm']}}</td>
-                    <td class="border pr-16 py-2 price">{{song['price']}}</td>
+                    <td class="border text-left pr-7 py-4">{{song['name']}}</td>
+                    <td class="border text-left py-4">{{song['length']}}</td>
+                    <td class="border py-4 bpm">{{song['bpm']}}</td>
+                    <td class="border pr-16 py-4 price">{{song['price']}}</td>
                 </tr>
             {% endfor %}
             </tbody>

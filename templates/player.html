@@ -1,5 +1,6 @@
 <script type='text/javascript'>
     const songs_url = {{data|safe}};
+    const songs_name = {{songs_name|safe}}
     let track_index = 0;
     // console.log(songs_url);
     const audioElement = document.createElement('audio');
@@ -19,7 +20,12 @@
     const volCtrl = document.getElementById('vol');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
+    const playBtn = document.getElementById('play-btn'); 
     const volIcon = document.querySelector('.vol-icon');
+    const songTitle = document.getElementById('song-title');
+    const currTime = document.getElementById('curr-play-time');
+    const totalDur = document.getElementById('total-play-time');
+    songTitle.innerText = songs_name[0];
     const gainNode = audioContext.createGain();
     
     gainNode.gain.value = volCtrl.value;
@@ -32,6 +38,7 @@
         if (audioContext.state === 'running' || audioContext.state === 'closed') audioContext.suspend();
         playBtn.dataset.play = 'false';
         audioElement.src = songs_url[i];
+        songTitle.innerText = songs_name[i]
         audioContext.resume();
     }
 
@@ -86,7 +93,7 @@
     }
     
 
-    const playBtn = document.getElementById('play-btn'); 
+   
 
     const play_pause = ()=> {
         
@@ -97,12 +104,12 @@
         }
 
         if (playBtn.dataset.play === 'false') {
-            playBtn.innerHTML = '<i class="fa fa-pause-circle text-4xl" aria-hidden="true"></i>'
+            playBtn.innerHTML = '<i class="fa fa-pause-circle text-5xl" aria-hidden="true"></i>'
             audioElement.play();
             playBtn.dataset.play = 'true';
             isPaussed = false;
         } else if (playBtn.dataset.play === 'true') {
-            playBtn.innerHTML = '<i class="fas fa-play-circle text-4xl"></i>'
+            playBtn.innerHTML = '<i class="fas fa-play-circle text-5xl"></i>'
             audioElement.pause();
             playBtn.dataset.play = 'false';
             isPaussed = true;
@@ -144,6 +151,7 @@
 
         if (track_index === 0) {
             auto_toggle_active(0);
+            songTitle.innerText = songs_name[0];
             count++;
         }
         play_pause();
@@ -159,6 +167,7 @@
         track_index++;
         if (track_index === songs_url.length) track_index = 0;
         audioElement.src = songs_url[track_index];
+        songTitle.innerText = songs_name[track_index];
         audioContext.resume();
         play_pause();
         auto_toggle_active(track_index);
