@@ -6,11 +6,13 @@
     const audioElement = document.createElement('audio');
     audioElement.src = songs_url[track_index];
     
+    
     //constants
     let count = 0;
     let vol_level = 0;
     let muteCount = 0;
     let isMute = false;
+    let track_duration = 0;
     let isPaussed = false;
 
     const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -25,13 +27,13 @@
     const songTitle = document.getElementById('song-title');
     const currTime = document.getElementById('curr-play-time');
     const totalDur = document.getElementById('total-play-time');
-    songTitle.innerText = songs_name[0];
+    // songTitle.innerText = songs_name[0];
     const gainNode = audioContext.createGain();
     
     gainNode.gain.value = volCtrl.value;
     vol_icon_auto();
     track.connect(gainNode).connect(audioContext.destination);
-
+    
     //functions
 
     const play_selected = i => {
@@ -39,7 +41,9 @@
         playBtn.dataset.play = 'false';
         audioElement.src = songs_url[i];
         songTitle.innerText = songs_name[i]
+        
         audioContext.resume();
+        
     }
 
     const toggle = (el, i) => {
@@ -92,7 +96,19 @@
         }
     }
     
+    function get_track_duration() {
+        let time = audioElement.duration/60
+        let minutes = Math.floor(time)
+        let decimal =time - minutes
+        decimal = parseFloat(decimal.toFixed(2))
+        // console.log(time, minutes,  decimal);
+        seconds = Math.floor(decimal*60)
+        if (seconds/10 <1) seconds = '0' + String(seconds) ;
 
+        if (minutes/10 < 1) minutes = '0' + String(minutes); 
+        
+        totalDur.innerText = `${minutes}:${seconds}`;
+    }
    
 
     const play_pause = ()=> {
@@ -126,6 +142,8 @@
                 active_track.classList.toggle('pause-color');
             }
         }
+
+       
 
     };
 
@@ -171,9 +189,14 @@
         audioContext.resume();
         play_pause();
         auto_toggle_active(track_index);
+        
 
         // autoplay the next song in the song after a song has ended
         
+    });
+
+    audioElement.addEventListener('loadedmetadata', ()=> {
+        get_track_duration();
     });
 
     
