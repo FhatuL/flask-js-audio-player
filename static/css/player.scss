@@ -1,0 +1,119 @@
+@import "../bootstrap/scss/functions";
+@import "../bootstrap/scss/variables";
+@import "../bootstrap/scss/mixins";
+
+$row-bg: #304FFE;
+$row-txt: #ffff;
+$breakpoint-tablet: 768px;
+
+
+
+.player {
+    display: flex;
+    flex-direction: column;
+}
+
+.song-info {
+
+    transition: .2s;
+    &:hover{
+        cursor: pointer;
+        background: $blue-100;
+    }   
+}
+
+.active {
+    background: $blue-700;
+    color: $row-txt;
+
+    &:hover {
+        background: $blue-700;
+    }
+}
+
+.player-controls {
+    display: flex;
+    flex-direction: column;
+}
+
+table {
+    border-left: 0px;
+    border-right: none;
+    width: 100%;
+
+    th, td {
+        border-left: none;
+        border-right: none;
+    }
+
+    max-height: 60vh;
+    overflow: scroll;
+
+    td:last-child, tr:last-child {
+        border-bottom: none;
+    }
+
+
+}
+
+
+#songs-list {
+    max-height: 75vh;
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 60%;
+
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $gray-100;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 20px;
+        background: $gray-200;
+    }
+}
+
+.song-art {
+    width: 35px;
+    height: 35px;
+}
+
+.vol-icon {
+    cursor: pointer;
+}
+
+@media (max-width: $breakpoint-tablet) {
+    .price, .bpm, .table-head {
+        display: none;
+    }
+
+    #songs-list {
+        width: 97%;
+    }
+
+    .player {
+        #songs-list {
+            order: -1;
+        }
+
+        .player-controls {
+            margin-top: 5%;
+        }
+    }
+
+
+}
+
+.pause-color {
+    background: $indigo-800;
+
+    &:hover {
+        background: $indigo-800;
+    }
+}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block css %} <link rel="stylesheet" href="{{url_for('static', filename='css/player.css')}}">  {% endblock  %}
+{% block content %}
+    <div class="player">
+
+        <div class="player-controls mx-auto">
+            <div class="control-buttons mx-auto flex justify-items-center">
+                <button class="mx-2" id="prev-btn">
+                    <i class="fa fa-backward" aria-hidden="true"></i>
+                </button>
+
+                <button id="play-btn" data-play="false" role="switch" aria-checked="false" class="bg-purple-50 shadow rounded-full">
+                    <i class="fas fa-play-circle text-4xl"></i>
+                    
+                </button>
+
+                <button class="mx-2" id="next-btn">
+                    <i class="fa fa-forward" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="vol-controls mx-auto">
+                <i class="material-icons md-24 vol-icon">volume_mute</i>
+                <input class="mx-auto" type="range" name="" id="vol" min="0" max='1' value="0.8" step="0.01">
+            </div>
+            
+        </div>
+        <div id="songs-list" class="shadow-md mx-auto">
+            <table class="border-collapse border mx-auto my-2">
+                <thead class="table-head">
+                    <tr class="py-1">
+                        <th class="border"></th>
+                        <th class="border text-left">TITLE</th>
+                        <th class="border text-left">DURATION</th>
+                        <th class="border text-left pr-32 bpm">BPM</th>
+                        <th class="border price"></th>
+                    </tr>
+                </thead>
+                <tbody >
+                {% for song in songs %}
+                    <tr onclick="toggle(this, {{song['index']}})" id = "index-{{song['index']}}" class= "song-info devide-y-2">
+                        <td class="border art pl-4"><img class ="song-art" src="{{url_for('static', filename = song['img'])}}" alt=""></td>
+                        <td class="border text-left pr-7 py-2 ">{{song['name']}}</td>
+                        <td class="border text-left">{{song['length']}}</td>
+                        <td class="border py-2 bpm">{{song['bpm']}}</td>
+                        <td class="border pr-16 py-2 price">{{song['price']}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    {% include 'player.html' %}
+{% endblock  %}
