@@ -8,8 +8,7 @@
     
     
     //constants
-    let count = 0.0;
-    let timin_count = 0;
+    let count = 0;
     let vol_level = 0;
     let muteCount = 0;
     let isMute = false;
@@ -268,7 +267,6 @@
         if (sec/10 <1) sec = '0' + String(sec);
         timin_count++;
         currTime.innerHTML = `${minutes}:${sec}`;
-        // console.log(sec)
     });
 
     
