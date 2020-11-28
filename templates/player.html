@@ -114,7 +114,7 @@
 
     const play_pause = ()=> {
         
-        
+        timin_count = 0;
 
         if (audioContext.state ==="suspended") {
             audioContext.resume();
@@ -177,6 +177,12 @@
             else volIcon.innerText = 'volume_mute';
         }
     };
+
+    function update_progress(curr_time, total_time){
+        width = Math.floor((curr_time/total_time)*100);
+
+
+    }
     //events
 
     playBtn.addEventListener('click', ()=>{
@@ -257,15 +263,12 @@
     audioElement.addEventListener('timeupdate', ()=>{
 
         let minutes = Math.floor(audioElement.currentTime/60);
-        let decimal = audioElement.currentTime/60 - minutes;
-        let sec = Math.floor(decimal*60);
+        let sec = Math.floor(audioElement.currentTime- minutes*60);
         if (minutes/10 < 1) minutes = '0'+ String(minutes);
         if (sec/10 <1) sec = '0' + String(sec);
         timin_count++;
-        if (timin_count=== 4){
-            timin_count = 0; 
-        currTime.innerHTML = `${minutes}:${sec}`;}
-        console.log(sec)
+        currTime.innerHTML = `${minutes}:${sec}`;
+        // console.log(sec)
     });
 
     
