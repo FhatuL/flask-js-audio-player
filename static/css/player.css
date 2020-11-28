@@ -127,6 +127,9 @@ table td:last-child, table tr:last-child {
   .player .player-controls {
     margin-top: 0%;
   }
+  .player-controls {
+    width: 65%;
+  }
   .beat-art {
     width: 70px;
     height: 70px;

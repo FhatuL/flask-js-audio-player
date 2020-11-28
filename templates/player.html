@@ -128,9 +128,7 @@
             playBtn.innerHTML = '<i class="fas fa-play-circle text-5xl"></i>'
             audioElement.pause();
             playBtn.dataset.play = 'false';
-            isPaussed = true;
-
-            
+            isPaussed = true; 
         }
 
         if (isPaussed) {
@@ -142,9 +140,6 @@
                 active_track.classList.toggle('pause-color');
             }
         }
-
-       
-
     };
 
     function vol_icon_auto() {
@@ -161,7 +156,6 @@
             else volIcon.innerText = 'volume_mute';
         }
     };
-
     //events
 
     playBtn.addEventListener('click', ()=>{
@@ -189,8 +183,6 @@
         audioContext.resume();
         play_pause();
         auto_toggle_active(track_index);
-        
-
         // autoplay the next song in the song after a song has ended
         
     });
@@ -227,7 +219,6 @@
 
         muteCount = 1;
     });
-
 
     // gainNode.gain.value = 0.01; 
  </script>
