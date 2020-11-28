@@ -114,7 +114,7 @@
 
     const play_pause = ()=> {
         
-        let active_track = document.querySelector('.active');
+        
 
         if (audioContext.state ==="suspended") {
             audioContext.resume();
@@ -132,8 +132,17 @@
             isPaussed = true; 
         }
 
-        if (isPaussed) {
-            active_track.classList.toggle('pause-color');
+        toggle_paused_col(isPaussed);
+
+
+    };
+
+    function toggle_paused_col(pauseBool, i = -1) {
+        if (i === -1) {
+        let active_track = document.querySelector('.active');
+        if (pauseBool) {
+            if (active_track.classList.contains('pause-color'));
+            else active_track.classList.toggle('pause-color');
         }
 
         else {
@@ -141,6 +150,17 @@
                 active_track.classList.toggle('pause-color');
             }
         }
+        
+        }
+
+        else {
+            let last_track = document.getElementById(`index-${i}`);
+            if (last_track.classList.contains('pause-color')) {
+                last_track.classList.toggle('pause-color');
+            }
+            
+        }
+
     };
 
     function vol_icon_auto() {
@@ -171,8 +191,50 @@
     });
 
     prevBtn.addEventListener('click', ()=> {
-        if (playBtn.dataset.play = 'true') ; //do nothing
+        let curr_pos = track_index;
+        toggle_paused_col(isPaussed, curr_pos);
+
+        curr_pos--;
+        if (curr_pos < 0) {
+            curr_pos = songs_url.length -1 ;
+        }
+
+        track_index = curr_pos;
+    
+        play_selected(track_index);
+        
+        auto_toggle_active(track_index);
+
+        if (isPaussed) {
+            toggle_paused_col(isPaussed);
+        }
+        else play_pause();
+         //do nothing
     });
+
+    nextBtn.addEventListener('click', ()=>{
+        let curr_pos = track_index;
+        toggle_paused_col(isPaussed, curr_pos);
+
+        curr_pos++;
+        if (curr_pos === songs_url.length) {
+            curr_pos = 0 ;
+        }
+
+        track_index = curr_pos;
+    
+        play_selected(track_index);
+        
+        auto_toggle_active(track_index);
+
+        if (isPaussed) {
+            toggle_paused_col(isPaussed);
+        }
+        else play_pause();
+
+    });
+
+
 
     audioElement.addEventListener('ended', ()=>{
         audioContext.suspend();
