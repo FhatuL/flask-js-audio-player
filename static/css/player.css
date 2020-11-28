@@ -120,19 +120,17 @@ table td:last-child, table tr:last-child {
   outline: none;
 }
 
-input[type="button"]:focus {
-  outline: none;
-}
-
 .progress-bar-container {
-  height: 1.5vh;
+  height: 1.7vh;
   width: 100%;
-  background-color: #304FFE;
 }
 
 .progress-bar {
-  background: #304FFE;
-  width: 100%;
+  background-color: #8540f5;
+  height: 100%;
+  width: 0%;
+  -webkit-transition: width 0.1s linear;
+  transition: width 0.1s linear;
 }
 
 @media (max-width: 768px) {

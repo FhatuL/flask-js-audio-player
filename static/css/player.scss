@@ -69,7 +69,6 @@ table {
 
 }
 
-
 #songs-list {
     max-height: 71vh;
     overflow: scroll;
@@ -129,21 +128,28 @@ table {
 .btn:focus {
     outline: none;
 }
-input[type="button"]:focus {
-    outline: none;
-}
+
 
 //progress bar
 
 .progress-bar-container {
-    height: 1.5vh;
+    height: 1.7vh;
     width: 100%;
-    background-color: #304FFE;
+    // background-color: #304FFE;
 }
 
+// #progress-bar {
+//     fill: #d6110ad2;
+//     height: 100;
+//     width: 100%;
+//     background-color: aqua;
+// }
+
 .progress-bar {
-    background: #304FFE;
-    width: 100%;
+    background-color: $indigo-400;
+    height: 100%;
+    width: 0%;
+    transition: width 0.1s linear;
 }
 
 
