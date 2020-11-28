@@ -9,6 +9,8 @@ $art-size: 100px;
 $art-size-s: 70px;
 $player-width-l: 60%;
 $player-width-s: 97%;
+$player-width-m: 85%;
+$breakpoint-md: 1280px;
 
 
 
@@ -120,10 +122,28 @@ table {
     width: 100%;
 }
 
+.btn {
+    outline: none;
+}
+
+.btn:focus {
+    outline: none;
+}
+input[type="button"]:focus {
+    outline: none;
+}
 
 //progress bar
+
+.progress-bar-container {
+    height: 1.5vh;
+    width: 100%;
+    background-color: #304FFE;
+}
+
 .progress-bar {
-    
+    background: #304FFE;
+    width: 100%;
 }
 
 
@@ -173,3 +193,9 @@ table {
     }
 }
 
+@media (min-width: $breakpoint-tablet) and (max-width:$breakpoint-md) {
+    .controls-section, #songs-list {
+        width: $player-width-m;
+
+    }
+}

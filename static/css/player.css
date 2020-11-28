@@ -112,6 +112,29 @@ table td:last-child, table tr:last-child {
   width: 100%;
 }
 
+.btn {
+  outline: none;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+input[type="button"]:focus {
+  outline: none;
+}
+
+.progress-bar-container {
+  height: 1.5vh;
+  width: 100%;
+  background-color: #304FFE;
+}
+
+.progress-bar {
+  background: #304FFE;
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   .price, .bpm, .table-head {
     display: none;
@@ -142,6 +165,12 @@ table td:last-child, table tr:last-child {
   }
   .track-info {
     width: 25%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {
+  .controls-section, #songs-list {
+    width: 85%;
   }
 }
 /*# sourceMappingURL=player.css.map */

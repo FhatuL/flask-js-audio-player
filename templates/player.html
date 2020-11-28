@@ -269,6 +269,10 @@
         currTime.innerHTML = `${minutes}:${sec}`;
     });
 
+    audioElement.addEventListener('pause', ()=> {
+        console.log('This was triggered');
+    });
+
     
     volCtrl.addEventListener('input', ()=>{
         gainNode.gain.value = volCtrl.value;

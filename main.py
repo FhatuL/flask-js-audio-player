@@ -36,7 +36,7 @@ for item,i in zip(paths, range(len(paths))):
         'name': audio_title,
         'path': 'audio/'+item,
         'bpm': '0',
-        'price': '',
+        'price': '300',
         'index': i,
         'img': 'img/artwork/' + 'default.png',
         'length': min_ + ':' + str(sec)

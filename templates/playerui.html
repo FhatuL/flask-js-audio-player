@@ -12,9 +12,12 @@
 
         <div class="player-controls mx-auto flex content-center justify-center py-2">
 
-            <div class="progress-bar">
+            <div class="progress-bar-container shadow-inner rounded-full">
+                <div class="progress-bar">
                 
+                </div>
             </div>
+
 
             <div class="text-gray-500 dark:text-gray-400 flex justify-between text-3x1 md:text-sm font-medium tabular-nums">
                 <div class="" id="curr-play-time">00:00</div>
@@ -22,16 +25,16 @@
             </div>
 
             <div class="control-buttons mx-auto flex self-center">
-                <button class="" id="prev-btn">
+                <button class="btn" id="prev-btn">
                     <i class="fa fa-backward text-2xl" aria-hidden="true"></i>
                 </button>
 
-                <button id="play-btn" data-play="false" role="switch" aria-checked="false" class="bg-purple-50 shadow rounded-full mx-6">
+                <button id="play-btn" data-play="false" role="switch" aria-checked="false" class="btn bg-purple-50 shadow rounded-full mx-6">
                     <i class="fas fa-play-circle text-5xl"></i>
                     
                 </button>
 
-                <button class="" id="next-btn">
+                <button class="btn" id="next-btn">
                     <i class="fa fa-forward text-2xl" aria-hidden="true"></i>
                 </button>
             </div>
@@ -66,7 +69,7 @@
                     <td class="border text-left pr-7 py-4">{{song['name']}}</td>
                     <td class="border text-left py-4">{{song['length']}}</td>
                     <td class="border py-4 bpm">{{song['bpm']}}</td>
-                    <td class="border pr-16 py-4 price">{{song['price']}}</td>
+                    <td class="border pr-16 py-4 price">R{{song['price']}}</td>
                 </tr>
             {% endfor %}
             </tbody>
