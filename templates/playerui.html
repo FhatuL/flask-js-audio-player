@@ -3,8 +3,8 @@
     <div class="controls-section flex mx-auto content-center justify-between flex-wrap border rounded-r-md shadow-md ">
 
         <div class="track-info  flex justify-items-center">
-            <div class="track-art flex justify-items-center">
-                <img src="{{url_for('static', filename='img/artwork/default.png')}}" alt="track artwork " class="beat-art my-auto">
+            <div class="track-art flex justify-items-center ">
+                <img src="{{url_for('static', filename='img/artwork/default.png')}}" alt="track artwork " class="beat-art my-auto shadow-md border-purple-300 border">
                 
             </div>
 
@@ -13,7 +13,7 @@
         <div class="player-controls mx-auto flex content-center justify-center py-2">
 
             <div class="progress-bar">
-
+                
             </div>
 
             <div class="text-gray-500 dark:text-gray-400 flex justify-between text-3x1 md:text-sm font-medium tabular-nums">
@@ -43,7 +43,7 @@
             
         </div>
 
-        <div class="song-title">
+        <div class="song-title shadow-inner animate-pulse">
             <p id="song-title" class="font-semibold text-center"></p>
         </div>
     </div>
