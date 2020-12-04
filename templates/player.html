@@ -28,6 +28,7 @@
     const currTime = document.getElementById('curr-play-time');
     const totalDur = document.getElementById('total-play-time');
     const progBar = document.getElementById('progress-bar');
+    const prog = document.querySelector('.progress-bar-container');
     // songTitle.innerText = songs_name[0];
     const gainNode = audioContext.createGain();
     
@@ -183,11 +184,19 @@
     function update_progress(curr_time, total_time){
         width = Math.floor((curr_time/total_time)*100);
         progBar.style.width = `${width}%`;
-        console.log(progBar.style.width)
+        // console.log(progBar.style.width)
+    }
 
-
+    function setWidth(e) {
+        const width = this.clientWidth;
+        const clickX = e.offsetX;
+        const track_duration = audioElement.duration;
+        const setCurTime = (clickX/width)*track_duration;
+        audioElement.currentTime = setCurTime;
     }
     //events
+
+    prog.addEventListener('click',  setWidth);
 
     playBtn.addEventListener('click', ()=>{
         
